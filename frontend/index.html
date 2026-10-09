@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrawlMind Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Crawl<span>Mind</span></h1>
+                <p>Responsible Async Web Crawler & Data Engine</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="glass-panel crawler-control">
+                <h2>New Crawl Task</h2>
+                <form id="crawlForm">
+                    <div class="input-group">
+                        <label for="url">Target URL</label>
+                        <input type="url" id="url" placeholder="https://example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="depth">Max Depth</label>
+                        <input type="number" id="depth" min="0" max="5" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="pages">Max Pages</label>
+                        <input type="number" id="pages" min="1" max="1000" value="100">
+                    </div>
+                    <div class="input-group checkbox-group">
+                        <input type="checkbox" id="js_render">
+                        <label for="js_render">JS Rendering</label>
+                    </div>
+                    <div class="input-group checkbox-group">
+                        <input type="checkbox" id="llm_eval">
+                        <label for="llm_eval">LLM Intelligence</label>
+                    </div>
+                    <button type="submit" id="startBtn" class="btn primary-btn">Launch Crawler <span class="loader" id="btnLoader"></span></button>
+                </form>
+            </section>
+
+            <section class="glass-panel status-panel" id="statusPanel">
+                <h2>Status: <span id="currentStatus" class="badge idle">Idle</span></h2>
+                <div class="stats-grid" id="statsGrid">
+                    <!-- Dynamic stats injected here -->
+                    <div class="stat-card"><div class="stat-value">-</div><div class="stat-label">Waiting for task</div></div>
+                </div>
+            </section>
+
+            <section class="glass-panel search-panel">
+                <h2>Intelligence Search</h2>
+                <p class="subtitle">Query your crawled database using FTS5</p>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search keywords...">
+                    <button id="searchBtn" class="btn secondary-btn">Search</button>
+                </div>
+                <div id="searchResults" class="results-container">
+                    <!-- Search results here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

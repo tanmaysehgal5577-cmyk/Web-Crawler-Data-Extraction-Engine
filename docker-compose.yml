@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  crawlmind:
+    build: .
+    image: crawlmind:latest
+    container_name: crawlmind_app
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+    environment:
+      - CRAWLER_DATABASE_PATH=/app/data/crawlmind.sqlite
+      - CRAWLER_OUTPUT_DIRECTORY=/app/output
+      - CRAWLER_LOG_LEVEL=INFO
+      - CRAWLER_MAX_DEPTH=2
+      # For connecting to local Ollama on the host machine:
+      # - CRAWLER_ENABLE_LLM=true
+      # - CRAWLER_LLM_PROVIDER=ollama
+      # - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    # Run a simple crawl by default, but can be overridden
+    command: ["crawl", "--url", "https://quotes.toscrape.com/", "--max-depth", "1"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+# Optional: Add Ollama service if you want it bundled
+#   ollama:
+#     image: ollama/ollama
+#     ports:
+#       - "11434:11434"
+#     volumes:
+#       - ollama_data:/root/.ollama
+# 
+# volumes:
+#   ollama_data:

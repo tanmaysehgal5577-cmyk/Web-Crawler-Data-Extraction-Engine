@@ -1,0 +1,31 @@
+# Virtual environment
+.env
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data and output
+data/
+output/
+*.db
+*.db-shm
+*.db-wal
+*.json
+*.csv
+*.xml
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+.dockerignore
+
+.vercel

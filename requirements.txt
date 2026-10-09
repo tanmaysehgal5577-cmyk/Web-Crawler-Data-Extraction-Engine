@@ -1,0 +1,23 @@
+# ============================================================
+# CrawlMind – Production Requirements
+# Python 3.11+
+# ============================================================
+
+# --- Core (required) ---
+aiohttp>=3.9,<4
+beautifulsoup4>=4.12
+lxml>=5.0
+aiosqlite>=0.20
+python-dotenv>=1.0
+brotli>=1.1.0
+protego>=0.3            # robots.txt parser with wildcard support
+typer>=0.12
+rich>=13.7              # CLI tables and progress
+fastapi>=0.100
+uvicorn>=0.23
+pydantic>=2.6           # LLM output validation
+
+# --- Optional extras (install separately) ---
+# JS rendering:         pip install playwright && playwright install chromium
+# MCP server:           pip install mcp>=1.0
+# Local embeddings:     pip install numpy sentence-transformers
